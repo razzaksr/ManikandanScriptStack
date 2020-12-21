@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Script Three</title>
+<script>
+function hello()
+{
+var yet=document.forms['check'].data.value;
+document.getElementById('res').innerHTML="Welcome to letechch Mr./MRs/Miss "+yet;
+}
+</script>
+</head>
+<body>
+
+<script>
+<!--
+document.write("Fresh start");
+//->
+</script>
+<noscript>Need to install java script</noscript>
+<form name="check">
+<input type="text" id="data">
+<input type="button" value="click" onclick="hello()">
+<!--<output id="res"></output>-->
+<p id="res"></p>
+</form>
+<input type="button" value="PRINT" onclick="window.print()">
+<input type="button" value="google" onclick="window.location.assign('https://www.google.co.in')">
+
+</body>
+</html>
