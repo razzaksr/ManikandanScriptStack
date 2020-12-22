@@ -1,0 +1,29 @@
+if(condition)
+{
+// true stat
+}
+else
+{
+// false stat
+}
+
+switch(data)
+{
+case "":break;
+}
+
+Loop:
+repeat:
+start
+end
+step up
+synatx:
+start;
+while( cond)
+{
+// repeation
+}
+for(start;end;inter)
+{
+
+}
