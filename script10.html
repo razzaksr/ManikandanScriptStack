@@ -1,0 +1,25 @@
+<html>
+<head>
+<title>Array Sample</title>
+<script>
+var yet=[];
+function store()
+{
+for(var pos=0;pos<3;pos++)
+{
+yet[pos]=Number(prompt("Enter the data: "));
+}
+}
+function traverse()
+{
+for(var index=0;index<yet.length;index++)
+{
+alert(yet[index]);
+}
+}
+</script>
+</head>
+<body onload=store()>
+<input type="button" value="list" onclick="traverse()">
+</body>
+</html>

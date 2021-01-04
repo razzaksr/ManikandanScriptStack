@@ -1,0 +1,27 @@
+<html>
+<head>
+<title>Looping concept</title>
+<script>
+function think()
+{
+var data=Number(document.forms['loop'].content.value);
+var each=""
+for(var hai=1;hai<=data;hai++)
+{
+var name=prompt("Enter the name: ");
+var age=Number(prompt("Enter the age: "));
+if(age>=11&&age<65)
+	each+=name+" "+age+"\n";
+//else{break;}
+else{hai--;continue;}
+}
+}
+</script>
+</head>
+<body>
+<form name="loop" onsubmit="think()">
+<input types="text" name="content">
+<input type="submit" value="Add">
+</form>
+</body>
+</html>
