@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>Array samples</title>
+<script>
+base=[];
+index=0;
+function Profile(name,pan,num,addr)
+{
+//alert("function called");
+this.user=name;
+this.pan=pan;
+this.contact=num;
+this.address=addr;
+this.show=show;
+}
+function add(object)
+{
+base[index]=object;index++;
+alert(object.user+" added into data base");
+}
+function trav()
+{
+alert("extraction before");
+for(index=0;index<base.length;index++)
+{
+base[index].show();
+//alert("extraction");
+}
+}
+function show()
+{
+//alert("hai");
+alert(this.user+" "+this.pan+" "+this.contact+" "+this.address);
+}
+function sort()
+{
+var dot=document.getElementById("what").value;
+//alert(dot);
+//alert(base[0][dot]);
+var temp;
+for(select=0;select<base.length;select++)
+{
+for(compare=select+1;compare<base.length;compare++)
+{
+if(base[select][dot]>base[compare][dot])
+{
+temp=base[select];
+base[select]=base[compare];
+base[compare]=temp;
+}
+}
+}
+}
+</script>
+</head>
+<body>
+<script>
+function check()
+{
+alert("Check called");
+var apple=new Profile("Manikandan","ABCDE8765A",9876543343,"Salem");
+var banana=new Profile("Mohamed","FGHIJ8765A",876789878,"Salem");
+var cupcake=new Profile("Sabari","BVCDF9877C",456787678,"Salem");
+var donut=new Profile("Vikas","JEDCD7694D",12343234,"Salem");
+//apple.show();banana.show();cupcake.show();donut.show();
+add(apple);add(banana);add(cupcake);add(donut);
+alert("Check completed");
+}
+</script>
+<input type="button" value="Check" onclick="check()">
+<input type="button" value="View" onclick="trav()">
+<input type="text" id="what" name="what">
+<input type="button" value="Order" onclick="sort()">
+</body>
+</html>
