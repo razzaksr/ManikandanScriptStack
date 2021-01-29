@@ -1,0 +1,412 @@
+Microsoft Windows [Version 10.0.10240]
+(c) 2015 Microsoft Corporation. All rights reserved.
+
+C:\Users\SRDB>mongo "mongodb+srv://scriptmani.q77zz.mongodb.net/ScriptMani" --username razak
+MongoDB shell version v4.4.3
+Enter password:
+connecting to: mongodb://scriptmani-shard-00-01.q77zz.mongodb.net:27017,scriptmani-shard-00-02.q77zz.mongodb.net:27017,scriptmani-shard-00-00.q77zz.mongodb.net:27017/ScriptMani?authSource=admin&compressors=disabled&gssapiServiceName=mongodb&replicaSet=atlas-k38q32-shard-0&ssl=true
+Implicit session: session { "id" : UUID("58f0bfb2-b31a-4190-ac9c-afb1bf1426e0") }
+MongoDB server version: 4.4.3
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> show dbs
+admin  0.000GB
+local  3.712GB
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> use zealous
+switched to db zealous
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.insert({"Company":"Wipro","Stock":5600})
+WriteResult({ "nInserted" : 1 })
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> show collections
+tech
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find()
+{ "_id" : ObjectId("60139c85769eaed3e3f72217"), "Company" : "Wipro", "Stock" : 5600 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find().pretty()
+{
+        "_id" : ObjectId("60139c85769eaed3e3f72217"),
+        "Company" : "Wipro",
+        "Stock" : 5600
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.insertOne({"Company":"JSW","Stock":2000})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("60139d98769eaed3e3f72218")
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find().pretty()
+{
+        "_id" : ObjectId("60139c85769eaed3e3f72217"),
+        "Company" : "Wipro",
+        "Stock" : 5600
+}
+{
+        "_id" : ObjectId("60139d98769eaed3e3f72218"),
+        "Company" : "JSW",
+        "Stock" : 2000
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.insertMany([{"Company":"Reliance","Stock":1200},{"Company":"Adhani groups","Stock":6200}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("60139e15769eaed3e3f72219"),
+                ObjectId("60139e15769eaed3e3f7221a")
+        ]
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find().pretty()
+{
+        "_id" : ObjectId("60139c85769eaed3e3f72217"),
+        "Company" : "Wipro",
+        "Stock" : 5600
+}
+{
+        "_id" : ObjectId("60139d98769eaed3e3f72218"),
+        "Company" : "JSW",
+        "Stock" : 2000
+}
+{
+        "_id" : ObjectId("60139e15769eaed3e3f72219"),
+        "Company" : "Reliance",
+        "Stock" : 1200
+}
+{
+        "_id" : ObjectId("60139e15769eaed3e3f7221a"),
+        "Company" : "Adhani groups",
+        "Stock" : 6200
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Company":"Reliance"}).pretty()
+{
+        "_id" : ObjectId("60139e15769eaed3e3f72219"),
+        "Company" : "Reliance",
+        "Stock" : 1200
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Stock":2000}).pretty()
+{
+        "_id" : ObjectId("60139d98769eaed3e3f72218"),
+        "Company" : "JSW",
+        "Stock" : 2000
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Stock":{$lte:2000}}).pretty()
+{
+        "_id" : ObjectId("60139d98769eaed3e3f72218"),
+        "Company" : "JSW",
+        "Stock" : 2000
+}
+{
+        "_id" : ObjectId("60139e15769eaed3e3f72219"),
+        "Company" : "Reliance",
+        "Stock" : 1200
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Stock":{$gt:2000}}).pretty()
+{
+        "_id" : ObjectId("60139c85769eaed3e3f72217"),
+        "Company" : "Wipro",
+        "Stock" : 5600
+}
+{
+        "_id" : ObjectId("60139e15769eaed3e3f7221a"),
+        "Company" : "Adhani groups",
+        "Stock" : 6200
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.update({"Company":"Wipro"},{$set:{"Stock":4000}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find().pretty()
+{
+        "_id" : ObjectId("60139c85769eaed3e3f72217"),
+        "Company" : "Wipro",
+        "Stock" : 4000
+}
+{
+        "_id" : ObjectId("60139d98769eaed3e3f72218"),
+        "Company" : "JSW",
+        "Stock" : 2000
+}
+{
+        "_id" : ObjectId("60139e15769eaed3e3f72219"),
+        "Company" : "Reliance",
+        "Stock" : 1200
+}
+{
+        "_id" : ObjectId("60139e15769eaed3e3f7221a"),
+        "Company" : "Adhani groups",
+        "Stock" : 6200
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.update({"Stock":{$lt:2000}},{$set:{"Stock":$Stock+200}})
+uncaught exception: ReferenceError: $Stock is not defined :
+@(shell):1:44
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.update({"Stock":{$lt:2000}},{$set:{"Stock":Stock+200}})
+uncaught exception: ReferenceError: Stock is not defined :
+@(shell):1:44
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.update({"Stock":{$lt:2000}},{$set:{"Stock":{Stock+200}}})
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:57
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.update({"Stock":{$lt:2000}},{$set:{"Stock":{$Stock+200}}})
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:58
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.update({"Stock":{$lt:2000}},{$set:{"Stock":200}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find().pretty()
+{
+        "_id" : ObjectId("60139c85769eaed3e3f72217"),
+        "Company" : "Wipro",
+        "Stock" : 4000
+}
+{
+        "_id" : ObjectId("60139d98769eaed3e3f72218"),
+        "Company" : "JSW",
+        "Stock" : 2000
+}
+{
+        "_id" : ObjectId("60139e15769eaed3e3f72219"),
+        "Company" : "Reliance",
+        "Stock" : 200
+}
+{
+        "_id" : ObjectId("60139e15769eaed3e3f7221a"),
+        "Company" : "Adhani groups",
+        "Stock" : 6200
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({$and:{"Stock":{$gte:2000}},{"Stock":{$lt:5000}}}).pretty()
+uncaught exception: SyntaxError: expected property name, got '{' :
+@(shell):1:41
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({$and{"Stock":{$gte:2000}},{"Stock":{$lt:5000}}}).pretty()
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:18
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({$and:{"Stock":{$gte:2000},{"Stock":{$lt:5000}}}).pretty()
+...
+...
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({$and{"Stock":{$gte:2000}},{"Stock":{$lt:5000}}}).pretty()
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:18
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({$and:{"Stock":{$gte:2000}},{"Stock":{$lt:5000}}}).pretty()
+uncaught exception: SyntaxError: expected property name, got '{' :
+@(shell):1:41
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({$and:{"Stock":{$gte:2000},{"Stock":{$lt:5000}}).pretty()
+...
+...
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({$and:{{"Stock":{$gte:2000}},{"Stock":{$lt:5000}}}).pretty()
+...
+...
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY>
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({$and:{"Stock":{$gte:2000}},{"Stock":{$lt:5000}}}).pretty()
+uncaught exception: SyntaxError: expected property name, got '{' :
+@(shell):1:41
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({$and:{{"Stock":{$gte:2000}},{"Stock":{$lt:5000}}}).pretty()
+...
+...
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY>
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> show collections
+tech
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.kart.insertMany([{"RAM":2,"price":4500},{"RAM":8,"price":18900},{"RAM":6,"price":12700},{"RAM":1,"price":7000},{"RAM":2,"price":8999},{"RAM":4,"price":11700}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("6013a1d3769eaed3e3f7221b"),
+                ObjectId("6013a1d3769eaed3e3f7221c"),
+                ObjectId("6013a1d3769eaed3e3f7221d"),
+                ObjectId("6013a1d3769eaed3e3f7221e"),
+                ObjectId("6013a1d3769eaed3e3f7221f"),
+                ObjectId("6013a1d3769eaed3e3f72220")
+        ]
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> show collections
+kart
+tech
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.kart.find().pretty()
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221b"), "RAM" : 2, "price" : 4500 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221c"), "RAM" : 8, "price" : 18900 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221d"), "RAM" : 6, "price" : 12700 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221e"), "RAM" : 1, "price" : 7000 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221f"), "RAM" : 2, "price" : 8999 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f72220"), "RAM" : 4, "price" : 11700 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.kart.find({$and:{{"RAM":{$gte:4}},{"price":{$lt:10000}}}}).pretty()
+uncaught exception: SyntaxError: expected property name, got '{' :
+@(shell):1:20
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.kart.find({$and:{"RAM":{$gte:4},"price":{$lt:10000}}).pretty()
+...
+...
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.kart.find({$or:{"RAM":{$gte:4},"price":{$lt:10000}}).pretty()
+...
+...
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.kart.find($and:[{"RAM":{$gte:4}},{"price":{$lt:10000}}]).pretty()
+uncaught exception: SyntaxError: missing ) after argument list :
+@(shell):1:17
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.kart.find($and:[{"RAM":{$gte:4},{"price":{$lte:10000}}}])
+uncaught exception: SyntaxError: missing ) after argument list :
+@(shell):1:17
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.kart.find($and:[{"RAM":{$gte:4}},{"price":{$lte:10000}}])
+uncaught exception: SyntaxError: missing ) after argument list :
+@(shell):1:17
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.kart.find({$and:[{"RAM":{$gte:4}},{"price":{$lte:10000}}]})
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.kart.find({$and:[{"RAM":{$gte:4}},{"price":{$lte:10000}}]})
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.kart.find({$and:[{"RAM":{$gte:4}},{"price":{$lte:14000}}]})
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221d"), "RAM" : 6, "price" : 12700 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f72220"), "RAM" : 4, "price" : 11700 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.kart.find({$or:[{"RAM":{$gte:4}},{"price":{$lte:14000}}]})
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221b"), "RAM" : 2, "price" : 4500 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221c"), "RAM" : 8, "price" : 18900 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221d"), "RAM" : 6, "price" : 12700 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221e"), "RAM" : 1, "price" : 7000 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221f"), "RAM" : 2, "price" : 8999 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f72220"), "RAM" : 4, "price" : 11700 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.kart.find({$or:[{"RAM":{$gte:4}},{"price":{$lte:14000}}]}).pretty()
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221b"), "RAM" : 2, "price" : 4500 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221c"), "RAM" : 8, "price" : 18900 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221d"), "RAM" : 6, "price" : 12700 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221e"), "RAM" : 1, "price" : 7000 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221f"), "RAM" : 2, "price" : 8999 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f72220"), "RAM" : 4, "price" : 11700 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.kart.find().pretty()
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221b"), "RAM" : 2, "price" : 4500 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221c"), "RAM" : 8, "price" : 18900 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221d"), "RAM" : 6, "price" : 12700 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221e"), "RAM" : 1, "price" : 7000 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221f"), "RAM" : 2, "price" : 8999 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f72220"), "RAM" : 4, "price" : 11700 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find().pretty()
+{
+        "_id" : ObjectId("60139c85769eaed3e3f72217"),
+        "Company" : "Wipro",
+        "Stock" : 4000
+}
+{
+        "_id" : ObjectId("60139d98769eaed3e3f72218"),
+        "Company" : "JSW",
+        "Stock" : 2000
+}
+{
+        "_id" : ObjectId("60139e15769eaed3e3f72219"),
+        "Company" : "Reliance",
+        "Stock" : 200
+}
+{
+        "_id" : ObjectId("60139e15769eaed3e3f7221a"),
+        "Company" : "Adhani groups",
+        "Stock" : 6200
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Company":{$in:["Wipro"]}}).pretty()
+{
+        "_id" : ObjectId("60139c85769eaed3e3f72217"),
+        "Company" : "Wipro",
+        "Stock" : 4000
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Company":{$in:["Wipro","JSW"]}}).pretty()
+{
+        "_id" : ObjectId("60139c85769eaed3e3f72217"),
+        "Company" : "Wipro",
+        "Stock" : 4000
+}
+{
+        "_id" : ObjectId("60139d98769eaed3e3f72218"),
+        "Company" : "JSW",
+        "Stock" : 2000
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Company":{$nin:["Wipro","JSW"]}}).pretty()
+{
+        "_id" : ObjectId("60139e15769eaed3e3f72219"),
+        "Company" : "Reliance",
+        "Stock" : 200
+}
+{
+        "_id" : ObjectId("60139e15769eaed3e3f7221a"),
+        "Company" : "Adhani groups",
+        "Stock" : 6200
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Company":{$nin:["Wipro","JSW"]}}).count()
+2
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Company":{$nin:["Wipro","JSW"]}}).count()
+2
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Company":{$in:["Wipro","JSW"]}}).count()
+2
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Company":{$in:["Wipro","JSW"]}}).pretty()
+{
+        "_id" : ObjectId("60139c85769eaed3e3f72217"),
+        "Company" : "Wipro",
+        "Stock" : 4000
+}
+{
+        "_id" : ObjectId("60139d98769eaed3e3f72218"),
+        "Company" : "JSW",
+        "Stock" : 2000
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find().pretty()
+{
+        "_id" : ObjectId("60139c85769eaed3e3f72217"),
+        "Company" : "Wipro",
+        "Stock" : 4000
+}
+{
+        "_id" : ObjectId("60139d98769eaed3e3f72218"),
+        "Company" : "JSW",
+        "Stock" : 2000
+}
+{
+        "_id" : ObjectId("60139e15769eaed3e3f72219"),
+        "Company" : "Reliance",
+        "Stock" : 200
+}
+{
+        "_id" : ObjectId("60139e15769eaed3e3f7221a"),
+        "Company" : "Adhani groups",
+        "Stock" : 6200
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Company":{$in:["JSW","Reliance"]}}).pretty()
+{
+        "_id" : ObjectId("60139d98769eaed3e3f72218"),
+        "Company" : "JSW",
+        "Stock" : 2000
+}
+{
+        "_id" : ObjectId("60139e15769eaed3e3f72219"),
+        "Company" : "Reliance",
+        "Stock" : 200
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Company":{$in:["JSW","Reliance"]},{"_id":0}}).pretty()
+uncaught exception: SyntaxError: expected property name, got '{' :
+@(shell):1:49
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({["Company":{$in:["JSW","Reliance"]},{"_id":0}]}).pretty()
+uncaught exception: SyntaxError: missing ] in computed property name :
+@(shell):1:24
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find().pretty()
+{
+        "_id" : ObjectId("60139c85769eaed3e3f72217"),
+        "Company" : "Wipro",
+        "Stock" : 4000
+}
+{
+        "_id" : ObjectId("60139d98769eaed3e3f72218"),
+        "Company" : "JSW",
+        "Stock" : 2000
+}
+{
+        "_id" : ObjectId("60139e15769eaed3e3f72219"),
+        "Company" : "Reliance",
+        "Stock" : 200
+}
+{
+        "_id" : ObjectId("60139e15769eaed3e3f7221a"),
+        "Company" : "Adhani groups",
+        "Stock" : 6200
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Company":"Wipro"}).pretty()
+{
+        "_id" : ObjectId("60139c85769eaed3e3f72217"),
+        "Company" : "Wipro",
+        "Stock" : 4000
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Company":"Wipro"},{"_id":0}).pretty()
+{ "Company" : "Wipro", "Stock" : 4000 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Company":"Wipro"},{"_id":0},{"Stock":0}).pretty()
+{ "Company" : "Wipro", "Stock" : 4000 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Company":"Wipro"},{"_id":0},{"Stock":1}).pretty()
+{ "Company" : "Wipro", "Stock" : 4000 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Company":"Wipro"},{"Company:0"},{"_id":0},{"Stock":1}).pretty()
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:45
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Company":"Wipro"},{"Company":0},{"_id":0},{"Stock":1}).pretty()
+{ "_id" : ObjectId("60139c85769eaed3e3f72217"), "Stock" : 4000 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Company":"Wipro"},[{"Company":0},{"_id":0}]}).pretty()
+uncaught exception: SyntaxError: missing ) after argument list :
+@(shell):1:58
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Company":"Wipro"},{"Company":0},{"_id":0}).pretty()
+{ "_id" : ObjectId("60139c85769eaed3e3f72217"), "Stock" : 4000 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Company":"Wipro"},{"Company":0}).pretty()
+{ "_id" : ObjectId("60139c85769eaed3e3f72217"), "Stock" : 4000 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Company":"Wipro"},{"Stock":0}).pretty()
+{ "_id" : ObjectId("60139c85769eaed3e3f72217"), "Company" : "Wipro" }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY>
