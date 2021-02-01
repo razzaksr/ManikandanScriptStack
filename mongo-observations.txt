@@ -410,3 +410,235 @@ MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Company":"Wipro"
 MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Company":"Wipro"},{"Stock":0}).pretty()
 { "_id" : ObjectId("60139c85769eaed3e3f72217"), "Company" : "Wipro" }
 MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY>
+
+
+Day2:
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find().pretty()
+{ "_id" : ObjectId("60139c85769eaed3e3f72217"), "Company" : "Wipro" }
+{
+        "_id" : ObjectId("60139d98769eaed3e3f72218"),
+        "Company" : "JSW",
+        "Stock" : 2000
+}
+{
+        "_id" : ObjectId("60139e15769eaed3e3f7221a"),
+        "Company" : "Adhani groups",
+        "Stock" : 6200
+}
+{
+        "_id" : ObjectId("60139e15769eaed3e3f72219"),
+        "Company" : "Reliance",
+        "Stock" : 200
+}
+{
+        "_id" : ObjectId("6013a919769eaed3e3f72222"),
+        "Company" : "Ambani",
+        "Stock" : 200
+}
+{
+        "_id" : ObjectId("6013a919769eaed3e3f72221"),
+        "Company" : "Jindal groups",
+        "Stock" : 7000
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Company":/.*groups/}).pretty()
+{
+        "_id" : ObjectId("60139e15769eaed3e3f7221a"),
+        "Company" : "Adhani groups",
+        "Stock" : 6200
+}
+{
+        "_id" : ObjectId("6013a919769eaed3e3f72221"),
+        "Company" : "Jindal groups",
+        "Stock" : 7000
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Company":/.*groups.*/}).pretty()
+{
+        "_id" : ObjectId("60139e15769eaed3e3f7221a"),
+        "Company" : "Adhani groups",
+        "Stock" : 6200
+}
+{
+        "_id" : ObjectId("6013a919769eaed3e3f72221"),
+        "Company" : "Jindal groups",
+        "Stock" : 7000
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.insert({"Company":"Tata groups limited","Stock":1000})
+WriteResult({ "nInserted" : 1 })
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Company":/.*groups.*/}).pretty()
+{
+        "_id" : ObjectId("60139e15769eaed3e3f7221a"),
+        "Company" : "Adhani groups",
+        "Stock" : 6200
+}
+{
+        "_id" : ObjectId("6013a919769eaed3e3f72221"),
+        "Company" : "Jindal groups",
+        "Stock" : 7000
+}
+{
+        "_id" : ObjectId("601791ba79a925acf3b5f07d"),
+        "Company" : "Tata groups limited",
+        "Stock" : 1000
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Company":/.*groups/}).pretty()
+{
+        "_id" : ObjectId("60139e15769eaed3e3f7221a"),
+        "Company" : "Adhani groups",
+        "Stock" : 6200
+}
+{
+        "_id" : ObjectId("6013a919769eaed3e3f72221"),
+        "Company" : "Jindal groups",
+        "Stock" : 7000
+}
+{
+        "_id" : ObjectId("601791ba79a925acf3b5f07d"),
+        "Company" : "Tata groups limited",
+        "Stock" : 1000
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find({"Company":/A.*/}).pretty()
+{
+        "_id" : ObjectId("60139e15769eaed3e3f7221a"),
+        "Company" : "Adhani groups",
+        "Stock" : 6200
+}
+{
+        "_id" : ObjectId("6013a919769eaed3e3f72222"),
+        "Company" : "Ambani",
+        "Stock" : 200
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find().pretty()
+{ "_id" : ObjectId("60139c85769eaed3e3f72217"), "Company" : "Wipro" }
+{
+        "_id" : ObjectId("60139d98769eaed3e3f72218"),
+        "Company" : "JSW",
+        "Stock" : 2000
+}
+{
+        "_id" : ObjectId("60139e15769eaed3e3f7221a"),
+        "Company" : "Adhani groups",
+        "Stock" : 6200
+}
+{
+        "_id" : ObjectId("60139e15769eaed3e3f72219"),
+        "Company" : "Reliance",
+        "Stock" : 200
+}
+{
+        "_id" : ObjectId("6013a919769eaed3e3f72222"),
+        "Company" : "Ambani",
+        "Stock" : 200
+}
+{
+        "_id" : ObjectId("6013a919769eaed3e3f72221"),
+        "Company" : "Jindal groups",
+        "Stock" : 7000
+}
+{
+        "_id" : ObjectId("601791ba79a925acf3b5f07d"),
+        "Company" : "Tata groups limited",
+        "Stock" : 1000
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find().pretty()
+{ "_id" : ObjectId("60139c85769eaed3e3f72217"), "Company" : "Wipro" }
+{
+        "_id" : ObjectId("60139d98769eaed3e3f72218"),
+        "Company" : "JSW",
+        "Stock" : 2000
+}
+{
+        "_id" : ObjectId("60139e15769eaed3e3f7221a"),
+        "Company" : "Adhani groups",
+        "Stock" : 6200
+}
+{
+        "_id" : ObjectId("60139e15769eaed3e3f72219"),
+        "Company" : "Reliance",
+        "Stock" : 200
+}
+{
+        "_id" : ObjectId("6013a919769eaed3e3f72222"),
+        "Company" : "Ambani",
+        "Stock" : 200
+}
+{
+        "_id" : ObjectId("6013a919769eaed3e3f72221"),
+        "Company" : "Jindal groups",
+        "Stock" : 7000
+}
+{
+        "_id" : ObjectId("601791ba79a925acf3b5f07d"),
+        "Company" : "Tata groups limited",
+        "Stock" : 1000
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY>
+
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find().sort({"Company":1})
+{ "_id" : ObjectId("60139e15769eaed3e3f7221a"), "Company" : "Adhani groups", "Stock" : 6200 }
+{ "_id" : ObjectId("6013a919769eaed3e3f72222"), "Company" : "Ambani", "Stock" : 200 }
+{ "_id" : ObjectId("60139d98769eaed3e3f72218"), "Company" : "JSW", "Stock" : 2000 }
+{ "_id" : ObjectId("6013a919769eaed3e3f72221"), "Company" : "Jindal groups", "Stock" : 7000 }
+{ "_id" : ObjectId("60139e15769eaed3e3f72219"), "Company" : "Reliance", "Stock" : 200 }
+{ "_id" : ObjectId("601791ba79a925acf3b5f07d"), "Company" : "Tata groups limited", "Stock" : 1000 }
+{ "_id" : ObjectId("60139c85769eaed3e3f72217"), "Company" : "Wipro" }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find().sort({"Stock":-1})
+{ "_id" : ObjectId("6013a919769eaed3e3f72221"), "Company" : "Jindal groups", "Stock" : 7000 }
+{ "_id" : ObjectId("60139e15769eaed3e3f7221a"), "Company" : "Adhani groups", "Stock" : 6200 }
+{ "_id" : ObjectId("60139d98769eaed3e3f72218"), "Company" : "JSW", "Stock" : 2000 }
+{ "_id" : ObjectId("601791ba79a925acf3b5f07d"), "Company" : "Tata groups limited", "Stock" : 1000 }
+{ "_id" : ObjectId("60139e15769eaed3e3f72219"), "Company" : "Reliance", "Stock" : 200 }
+{ "_id" : ObjectId("6013a919769eaed3e3f72222"), "Company" : "Ambani", "Stock" : 200 }
+{ "_id" : ObjectId("60139c85769eaed3e3f72217"), "Company" : "Wipro" }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.delete({"Company":"Wipro"})
+uncaught exception: TypeError: db.tech.delete is not a function :
+@(shell):1:1
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.deleteOne({"Company":"Wipro"})
+{ "acknowledged" : true, "deletedCount" : 1 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find()
+{ "_id" : ObjectId("60139d98769eaed3e3f72218"), "Company" : "JSW", "Stock" : 2000 }
+{ "_id" : ObjectId("60139e15769eaed3e3f7221a"), "Company" : "Adhani groups", "Stock" : 6200 }
+{ "_id" : ObjectId("60139e15769eaed3e3f72219"), "Company" : "Reliance", "Stock" : 200 }
+{ "_id" : ObjectId("6013a919769eaed3e3f72222"), "Company" : "Ambani", "Stock" : 200 }
+{ "_id" : ObjectId("6013a919769eaed3e3f72221"), "Company" : "Jindal groups", "Stock" : 7000 }
+{ "_id" : ObjectId("601791ba79a925acf3b5f07d"), "Company" : "Tata groups limited", "Stock" : 1000 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.remove({"Stock":200})
+WriteResult({ "nRemoved" : 2 })
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.tech.find()
+{ "_id" : ObjectId("60139d98769eaed3e3f72218"), "Company" : "JSW", "Stock" : 2000 }
+{ "_id" : ObjectId("60139e15769eaed3e3f7221a"), "Company" : "Adhani groups", "Stock" : 6200 }
+{ "_id" : ObjectId("6013a919769eaed3e3f72221"), "Company" : "Jindal groups", "Stock" : 7000 }
+{ "_id" : ObjectId("601791ba79a925acf3b5f07d"), "Company" : "Tata groups limited", "Stock" : 1000 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.kart.find()
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221f"), "RAM" : 2, "price" : 8999 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221d"), "RAM" : 6, "price" : 12700 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f72220"), "RAM" : 4, "price" : 11700 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221c"), "RAM" : 8, "price" : 18900 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221b"), "RAM" : 2, "price" : 4500 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221e"), "RAM" : 1, "price" : 7000 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.kart.remove({"RAM":2},1)
+WriteResult({ "nRemoved" : 1 })
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.kart.find()
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221d"), "RAM" : 6, "price" : 12700 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f72220"), "RAM" : 4, "price" : 11700 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221c"), "RAM" : 8, "price" : 18900 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221b"), "RAM" : 2, "price" : 4500 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221e"), "RAM" : 1, "price" : 7000 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.kart.remove({$and:["RAM":{$gte:4},{"RAM":{$lte:6}}]})
+uncaught exception: SyntaxError: missing ] after element list :
+@(shell):1:27
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.kart.remove({$and:["RAM":{$gte:4},"RAM":{$lte:6}]})
+uncaught exception: SyntaxError: missing ] after element list :
+@(shell):1:27
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.kart.remove($and:["RAM":{$gte:4},"RAM":{$lte:6}])
+uncaught exception: SyntaxError: missing ) after argument list :
+@(shell):1:19
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.kart.remove({$and:["RAM":{$gte:4},"RAM":{$lte:6}]})
+uncaught exception: SyntaxError: missing ] after element list :
+@(shell):1:27
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.kart.remove({$and:[{"RAM":{$gte:4}},{"RAM":{$lte:6}}]})
+WriteResult({ "nRemoved" : 2 })
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.kart.find()
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221c"), "RAM" : 8, "price" : 18900 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221b"), "RAM" : 2, "price" : 4500 }
+{ "_id" : ObjectId("6013a1d3769eaed3e3f7221e"), "RAM" : 1, "price" : 7000 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY>
