@@ -1017,3 +1017,227 @@ MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.stocks.aggregate([{$match:{}
 { "_id" : "richard", "value" : 890 }
 { "_id" : "mohamed", "value" : 786.5 }
 MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY>
+
+
+
+Day 4:
+
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.stocks.aggregate([{$match:{}},{$group:{'_id':'$own',value:{$sum:'$worth'}}},{$sort:{value:-1}}])
+{ "_id" : "razak", "value" : 7161.1 }
+{ "_id" : "mani", "value" : 1436.3 }
+{ "_id" : "richard", "value" : 890 }
+{ "_id" : "mohamed", "value" : 786.5 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.stocks.aggregate([{$match:{own:/m/}},{$group:{'_id':'$own',value:{$sum:'$worth'}}},{$sort:{value:-1}}])
+{ "_id" : "mani", "value" : 1436.3 }
+{ "_id" : "mohamed", "value" : 786.5 }
+
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.stocks.aggregate([{$match:{$or:[{own:/m/},{own:/r/}]}},{$group:{'_id':'$own',value:{$sum:'$worth'}}},{$sort:{value:-1}}])
+{ "_id" : "razak", "value" : 7161.1 }
+{ "_id" : "mani", "value" : 1436.3 }
+{ "_id" : "richard", "value" : 890 }
+{ "_id" : "mohamed", "value" : 786.5 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.stocks.find()
+{ "_id" : ObjectId("601a4145018a2f524aa20f56"), "stock" : "aluminium", "worth" : 450.6, "own" : "razak" }
+{ "_id" : ObjectId("601a4145018a2f524aa20f57"), "stock" : "tata", "worth" : 560.4, "own" : "mani" }
+{ "_id" : ObjectId("601a4145018a2f524aa20f58"), "stock" : "silver", "worth" : 6710.5, "own" : "razak" }
+{ "_id" : ObjectId("601a4145018a2f524aa20f59"), "stock" : "aluminium", "worth" : 890, "own" : "richard" }
+{ "_id" : ObjectId("601a4145018a2f524aa20f5b"), "stock" : "jsw", "worth" : 875.9, "own" : "mani" }
+{ "_id" : ObjectId("601a43a4018a2f524aa20f5c"), "stock" : "iron", "worth" : 786.5, "own" : "mohamed" }
+
+
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.stocks.insertOne({stock:'tata',worth:760,own:'Rasheedha'})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("601b888e0803cc3545a00aca")
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.stocks.aggregate([{$match:{$or:[{own:/m/},{own:/r/}]}},{$group:{'_id':'$own',value:{$sum:'$worth'}}},{$sort:{value:-1}}])
+{ "_id" : "razak", "value" : 7161.1 }
+{ "_id" : "mani", "value" : 1436.3 }
+{ "_id" : "richard", "value" : 890 }
+{ "_id" : "mohamed", "value" : 786.5 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.stocks.aggregate([{$match:{$or:[{own:/m/},{own:/r/},{own:/R/}]}},{$group:{'_id':'$own',value:{$sum:'$worth'}}},{$sort:{value:-1}}])
+{ "_id" : "razak", "value" : 7161.1 }
+{ "_id" : "mani", "value" : 1436.3 }
+{ "_id" : "richard", "value" : 890 }
+{ "_id" : "mohamed", "value" : 786.5 }
+{ "_id" : "Rasheedha", "value" : 760 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.stocks.find()
+{ "_id" : ObjectId("601a4145018a2f524aa20f56"), "stock" : "aluminium", "worth" : 450.6, "own" : "razak" }
+{ "_id" : ObjectId("601a4145018a2f524aa20f57"), "stock" : "tata", "worth" : 560.4, "own" : "mani" }
+{ "_id" : ObjectId("601a4145018a2f524aa20f58"), "stock" : "silver", "worth" : 6710.5, "own" : "razak" }
+{ "_id" : ObjectId("601a4145018a2f524aa20f59"), "stock" : "aluminium", "worth" : 890, "own" : "richard" }
+{ "_id" : ObjectId("601a4145018a2f524aa20f5b"), "stock" : "jsw", "worth" : 875.9, "own" : "mani" }
+{ "_id" : ObjectId("601a43a4018a2f524aa20f5c"), "stock" : "iron", "worth" : 786.5, "own" : "mohamed" }
+{ "_id" : ObjectId("601b888e0803cc3545a00aca"), "stock" : "tata", "worth" : 760, "own" : "Rasheedha" }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.stocks.count()
+7
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.stocks.count({stock:'tata'})
+2
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.stocks.distinct('stock')
+[ "aluminium", "iron", "jsw", "silver", "tata" ]
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.stocks.distinct('worth')
+[ 450.6, 560.4, 760, 786.5, 875.9, 890, 6710.5 ]
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.stocks.distinct('own')
+[ "Rasheedha", "mani", "mohamed", "razak", "richard" ]
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY>
+
+
+
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.business.bulkWrite(
+... [
+... {
+... insertOne:{
+... "document":{shopname:'bismi biriyani stall',shopnature:'food',shopaddress:'ponnammapet'}
+... }
+... },
+... {
+... insertOne:
+... {
+... "document":{shopname:'vtech',shopnature:'xerox service',shopaddress:'J.Ammapalayam'}
+... }
+... },
+... {updateOne:
+... {
+... filter:{shopname:'java hut'},
+... update:{$set:{shopaddress:'new bus stand'}}}
+... },
+... {deleteOne:{filter:{shopname:'zeal shop'}}},
+... {replaceOne:{
+... filter:{shopname:'apple corner'},
+... replacement:{shopname:'apple corner',shopaddress:'four roads',rating:4.5}}}
+... ]
+... );
+{
+        "acknowledged" : true,
+        "deletedCount" : 1,
+        "insertedCount" : 2,
+        "matchedCount" : 2,
+        "upsertedCount" : 0,
+        "insertedIds" : {
+                "0" : ObjectId("601b906d0803cc3545a00acb"),
+                "1" : ObjectId("601b906d0803cc3545a00acc")
+        },
+        "upsertedIds" : {
+
+        }
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.business.find().pretty()
+{
+        "_id" : ObjectId("601a3a62018a2f524aa20f50"),
+        "shopname" : "coffee hut",
+        "shopnature" : "refresh corner",
+        "shopaddress" : "ponnammapet"
+}
+{
+        "_id" : ObjectId("601a3a62018a2f524aa20f51"),
+        "shopname" : "java hut",
+        "shopnature" : "brunch",
+        "shopaddress" : "new bus stand"
+}
+{
+        "_id" : ObjectId("601a3a62018a2f524aa20f52"),
+        "shopname" : "coffee mad",
+        "shopnature" : "snacks corner",
+        "shopaddress" : "javavillage"
+}
+{
+        "_id" : ObjectId("601a3a62018a2f524aa20f53"),
+        "shopname" : "buhari",
+        "shopnature" : "brunch corner",
+        "shopaddress" : "ponnammapet"
+}
+{
+        "_id" : ObjectId("601a3b18018a2f524aa20f54"),
+        "shopname" : "ponnammapet corner",
+        "shopnature" : "coffeeshop",
+        "shopaddress" : "ammapet"
+}
+{
+        "_id" : ObjectId("601b8484d90ae211d4ca9472"),
+        "shopname" : "ammapet corner",
+        "shopnature" : "coffeeshop",
+        "shopaddress" : "ammapet"
+}
+{
+        "_id" : ObjectId("601b84bdd90ae211d4ca9473"),
+        "shopname" : "apple corner",
+        "shopaddress" : "four roads",
+        "rating" : 4.5
+}
+{
+        "_id" : ObjectId("601b906d0803cc3545a00acb"),
+        "shopname" : "bismi biriyani stall",
+        "shopnature" : "food",
+        "shopaddress" : "ponnammapet"
+}
+{
+        "_id" : ObjectId("601b906d0803cc3545a00acc"),
+        "shopname" : "vtech",
+        "shopnature" : "xerox service",
+        "shopaddress" : "J.Ammapalayam"
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY>
+
+
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.business.find({rating:{$exists:true}}).pretty()
+{
+        "_id" : ObjectId("601b84bdd90ae211d4ca9473"),
+        "shopname" : "apple corner",
+        "shopaddress" : "four roads",
+        "rating" : 4.5
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.business.find({$not{rating:{$exists:true}}}).pretty()
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:22
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.business.find({rating:{$exists:false}}).pretty()
+{
+        "_id" : ObjectId("601a3a62018a2f524aa20f50"),
+        "shopname" : "coffee hut",
+        "shopnature" : "refresh corner",
+        "shopaddress" : "ponnammapet"
+}
+{
+        "_id" : ObjectId("601a3a62018a2f524aa20f51"),
+        "shopname" : "java hut",
+        "shopnature" : "brunch",
+        "shopaddress" : "new bus stand"
+}
+{
+        "_id" : ObjectId("601a3a62018a2f524aa20f52"),
+        "shopname" : "coffee mad",
+        "shopnature" : "snacks corner",
+        "shopaddress" : "javavillage"
+}
+{
+        "_id" : ObjectId("601a3a62018a2f524aa20f53"),
+        "shopname" : "buhari",
+        "shopnature" : "brunch corner",
+        "shopaddress" : "ponnammapet"
+}
+{
+        "_id" : ObjectId("601a3b18018a2f524aa20f54"),
+        "shopname" : "ponnammapet corner",
+        "shopnature" : "coffeeshop",
+        "shopaddress" : "ammapet"
+}
+{
+        "_id" : ObjectId("601b8484d90ae211d4ca9472"),
+        "shopname" : "ammapet corner",
+        "shopnature" : "coffeeshop",
+        "shopaddress" : "ammapet"
+}
+{
+        "_id" : ObjectId("601b906d0803cc3545a00acb"),
+        "shopname" : "bismi biriyani stall",
+        "shopnature" : "food",
+        "shopaddress" : "ponnammapet"
+}
+{
+        "_id" : ObjectId("601b906d0803cc3545a00acc"),
+        "shopname" : "vtech",
+        "shopnature" : "xerox service",
+        "shopaddress" : "J.Ammapalayam"
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY>
+
+
