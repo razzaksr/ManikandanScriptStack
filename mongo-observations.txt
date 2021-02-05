@@ -1241,3 +1241,434 @@ MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.business.find({rating:{$exis
 MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY>
 
 
+Day 5:
+Microsoft Windows [Version 10.0.10240]
+(c) 2015 Microsoft Corporation. All rights reserved.
+
+C:\Users\SRDB>mongo "mongodb+srv://scriptmani.q77zz.mongodb.net/ScriptMani" --username razak
+MongoDB shell version v4.4.3
+Enter password:
+connecting to: mongodb://scriptmani-shard-00-00.q77zz.mongodb.net:27017,scriptmani-shard-00-01.q77zz.mongodb.net:27017,scriptmani-shard-00-02.q77zz.mongodb.net:27017/ScriptMani?authSource=admin&compressors=disabled&gssapiServiceName=mongodb&replicaSet=atlas-k38q32-shard-0&ssl=true
+{"t":{"$date":"2021-02-05T05:54:52.012Z"},"s":"I",  "c":"NETWORK",  "id":4333208, "ctx":"ReplicaSetMonitor-TaskExecutor","msg":"RSM host selection timeout","attr":{"replicaSet":"atlas-k38q32-shard-0","error":"FailedToSatisfyReadPreference: Could not find host matching read preference { mode: \"nearest\" } for set atlas-k38q32-shard-0"}}
+
+
+*** You have failed to connect to a MongoDB Atlas cluster. Please ensure that your IP whitelist allows connections from your network.
+
+Error: connect failed to replica set atlas-k38q32-shard-0/scriptmani-shard-00-00.q77zz.mongodb.net:27017,scriptmani-shard-00-01.q77zz.mongodb.net:27017,scriptmani-shard-00-02.q77zz.mongodb.net:27017 :
+connect@src/mongo/shell/mongo.js:374:17
+@(connect):2:6
+exception: connect failed
+exiting with code 1
+
+C:\Users\SRDB>mongo "mongodb+srv://scriptmani.q77zz.mongodb.net/ScriptMani" --username razak
+MongoDB shell version v4.4.3
+Enter password:
+connecting to: mongodb://scriptmani-shard-00-00.q77zz.mongodb.net:27017,scriptmani-shard-00-01.q77zz.mongodb.net:27017,scriptmani-shard-00-02.q77zz.mongodb.net:27017/ScriptMani?authSource=admin&compressors=disabled&gssapiServiceName=mongodb&replicaSet=atlas-k38q32-shard-0&ssl=true
+{"t":{"$date":"2021-02-05T05:55:19.290Z"},"s":"I",  "c":"NETWORK",  "id":4333208, "ctx":"ReplicaSetMonitor-TaskExecutor","msg":"RSM host selection timeout","attr":{"replicaSet":"atlas-k38q32-shard-0","error":"FailedToSatisfyReadPreference: Could not find host matching read preference { mode: \"nearest\" } for set atlas-k38q32-shard-0"}}
+
+
+*** You have failed to connect to a MongoDB Atlas cluster. Please ensure that your IP whitelist allows connections from your network.
+
+Error: connect failed to replica set atlas-k38q32-shard-0/scriptmani-shard-00-00.q77zz.mongodb.net:27017,scriptmani-shard-00-01.q77zz.mongodb.net:27017,scriptmani-shard-00-02.q77zz.mongodb.net:27017 :
+connect@src/mongo/shell/mongo.js:374:17
+@(connect):2:6
+exception: connect failed
+exiting with code 1
+
+C:\Users\SRDB>mongo "mongodb+srv://scriptmani.q77zz.mongodb.net/ScriptMani" --username razak
+MongoDB shell version v4.4.3
+Enter password:
+connecting to: mongodb://scriptmani-shard-00-00.q77zz.mongodb.net:27017,scriptmani-shard-00-01.q77zz.mongodb.net:27017,scriptmani-shard-00-02.q77zz.mongodb.net:27017/ScriptMani?authSource=admin&compressors=disabled&gssapiServiceName=mongodb&replicaSet=atlas-k38q32-shard-0&ssl=true
+Implicit session: session { "id" : UUID("ff929793-00fe-4ae5-a315-10339807495a") }
+MongoDB server version: 4.4.3
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> use zealous
+switched to db zealous
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find().pretty()
+{
+        "_id" : ObjectId("601ce015d34dab09d8e1204d"),
+        "user" : "razak-mohamed",
+        "contact" : {
+                "email" : "razzaksr@gmail.com",
+                "mobile" : 8667002959
+        },
+        "dob" : "1990-01-26",
+        "skills" : [
+                "java",
+                "javascript",
+                "python",
+                "dot net",
+                "selenium"
+        ]
+}
+{
+        "_id" : ObjectId("601ce015d34dab09d8e1204e"),
+        "user" : "sabari-nathan",
+        "contact" : {
+                "email" : "sabariragu@gmail.com",
+                "mobile" : 8667002959
+        },
+        "dob" : "1990-05-18",
+        "skills" : [
+                "python",
+                "dot net"
+        ]
+}
+{
+        "_id" : ObjectId("601ce015d34dab09d8e1204f"),
+        "user" : "annamalai",
+        "contact" : {
+                "email" : "annamalai.s@gmail.com",
+                "mobile" : 9688193688
+        },
+        "dob" : "1995-08-20",
+        "skills" : [
+                "java",
+                "javascript",
+                "python",
+                "dot net",
+                "selenium"
+        ]
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({skills:'java'})
+{ "_id" : ObjectId("601ce015d34dab09d8e1204d"), "user" : "razak-mohamed", "contact" : { "email" : "razzaksr@gmail.com", "mobile" : 8667002959 }, "dob" : "1990-01-26", "skills" : [ "java", "javascript", "python", "dot net", "selenium" ] }
+{ "_id" : ObjectId("601ce015d34dab09d8e1204f"), "user" : "annamalai", "contact" : { "email" : "annamalai.s@gmail.com", "mobile" : 9688193688 }, "dob" : "1995-08-20", "skills" : [ "java", "javascript", "python", "dot net", "selenium" ] }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({contact:8667002959})
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({contact.mobile:8667002959})
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:24
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({"contact.mobile":8667002959})
+{ "_id" : ObjectId("601ce015d34dab09d8e1204d"), "user" : "razak-mohamed", "contact" : { "email" : "razzaksr@gmail.com", "mobile" : 8667002959 }, "dob" : "1990-01-26", "skills" : [ "java", "javascript", "python", "dot net", "selenium" ] }
+{ "_id" : ObjectId("601ce015d34dab09d8e1204e"), "user" : "sabari-nathan", "contact" : { "email" : "sabariragu@gmail.com", "mobile" : 8667002959 }, "dob" : "1990-05-18", "skills" : [ "python", "dot net" ] }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({user:"sabari-nathan"},{"skills.0"})
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:50
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({user:"sabari-nathan"},{"skills"})
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:48
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({user:"sabari-nathan"},{skills})
+uncaught exception: ReferenceError: skills is not defined :
+@(shell):1:41
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({user:"sabari-nathan"},skills)
+uncaught exception: ReferenceError: skills is not defined :
+@(shell):1:18
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({user:"sabari-nathan"},{skills:1})
+{ "_id" : ObjectId("601ce015d34dab09d8e1204e"), "skills" : [ "python", "dot net" ] }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({user:"sabari-nathan"},{skills:1,contact:1})
+{ "_id" : ObjectId("601ce015d34dab09d8e1204e"), "contact" : { "email" : "sabariragu@gmail.com", "mobile" : 8667002959 }, "skills" : [ "python", "dot net" ] }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({user:"sabari-nathan"},{skills:1,contact:1})
+{ "_id" : ObjectId("601ce015d34dab09d8e1204e"), "contact" : { "email" : "sabariragu@gmail.com", "mobile" : 8667002959 }, "skills" : [ "python", "dot net" ] }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({"user":"sabari-nathan"})
+{ "_id" : ObjectId("601ce015d34dab09d8e1204e"), "user" : "sabari-nathan", "contact" : { "email" : "sabariragu@gmail.com", "mobile" : 8667002959 }, "dob" : "1990-05-18", "skills" : [ "python", "dot net" ] }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({user:"sabari-nathan"},{"skills.0":{$in:['java']}})
+Error: error: {
+        "operationTime" : Timestamp(1612505597, 1),
+        "ok" : 0,
+        "errmsg" : "Expression $in takes exactly 2 arguments. 1 were passed in.",
+        "code" : 16020,
+        "codeName" : "Location16020",
+        "$clusterTime" : {
+                "clusterTime" : Timestamp(1612505597, 1),
+                "signature" : {
+                        "hash" : BinData(0,"TIBPbgGtXbOImaOxPAsYRfiwvXw="),
+                        "keyId" : NumberLong("6921654416743333891")
+                }
+        }
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({"skills.0":{$in:['java']}})
+{ "_id" : ObjectId("601ce015d34dab09d8e1204d"), "user" : "razak-mohamed", "contact" : { "email" : "razzaksr@gmail.com", "mobile" : 8667002959 }, "dob" : "1990-01-26", "skills" : [ "java", "javascript", "python", "dot net", "selenium" ] }
+{ "_id" : ObjectId("601ce015d34dab09d8e1204f"), "user" : "annamalai", "contact" : { "email" : "annamalai.s@gmail.com", "mobile" : 9688193688 }, "dob" : "1995-08-20", "skills" : [ "java", "javascript", "python", "dot net", "selenium" ] }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({"user":"razak-mohamed"},{"skills.1":{$in:['python']}})
+Error: error: {
+        "operationTime" : Timestamp(1612505674, 1),
+        "ok" : 0,
+        "errmsg" : "Expression $in takes exactly 2 arguments. 1 were passed in.",
+        "code" : 16020,
+        "codeName" : "Location16020",
+        "$clusterTime" : {
+                "clusterTime" : Timestamp(1612505674, 1),
+                "signature" : {
+                        "hash" : BinData(0,"VU+TN/iK2r/Yp8A1pLAWay13U2k="),
+                        "keyId" : NumberLong("6921654416743333891")
+                }
+        }
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({"user":"sabari-nathan","skills.0"})
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:50
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({"user":"sabari-nathan"})
+{ "_id" : ObjectId("601ce015d34dab09d8e1204e"), "user" : "sabari-nathan", "contact" : { "email" : "sabariragu@gmail.com", "mobile" : 8667002959 }, "dob" : "1990-05-18", "skills" : [ "python", "dot net" ] }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({"user":"sabari-nathan"}).skills.0
+uncaught exception: SyntaxError: unexpected token: numeric literal :
+@(shell):1:48
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({"user":"sabari-nathan"},{"skills":1})
+{ "_id" : ObjectId("601ce015d34dab09d8e1204e"), "skills" : [ "python", "dot net" ] }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({"user":"sabari-nathan"},{"skills":0})
+{ "_id" : ObjectId("601ce015d34dab09d8e1204e"), "user" : "sabari-nathan", "contact" : { "email" : "sabariragu@gmail.com", "mobile" : 8667002959 }, "dob" : "1990-05-18" }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({"user":"sabari-nathan"},{"skills.0":1})
+{ "_id" : ObjectId("601ce015d34dab09d8e1204e"), "skills" : [ ] }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({"user":"sabari-nathan"},{"skills.1":1})
+{ "_id" : ObjectId("601ce015d34dab09d8e1204e"), "skills" : [ ] }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({"user":"sabari-nathan"},{"skills":1})
+{ "_id" : ObjectId("601ce015d34dab09d8e1204e"), "skills" : [ "python", "dot net" ] }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({"user":"sabari-nathan"},{skills.0:1})
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:48
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({"user":"sabari-nathan"},{"skills.0":1})
+{ "_id" : ObjectId("601ce015d34dab09d8e1204e"), "skills" : [ ] }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({"user":"razak-mohamed"},{"skills.0":1})
+{ "_id" : ObjectId("601ce015d34dab09d8e1204d"), "skills" : [ ] }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({"user":"razak-mohamed"},{skills:{$size:{$gte:3}}})
+Error: error: {
+        "operationTime" : Timestamp(1612505964, 1),
+        "ok" : 0,
+        "errmsg" : "Expression $gte takes exactly 2 arguments. 1 were passed in.",
+        "code" : 16020,
+        "codeName" : "Location16020",
+        "$clusterTime" : {
+                "clusterTime" : Timestamp(1612505964, 1),
+                "signature" : {
+                        "hash" : BinData(0,"j1ImB0cPQiL3bhw++Z0J2SOAwk8="),
+                        "keyId" : NumberLong("6921654416743333891")
+                }
+        }
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({"user":"razak-mohamed"},{"skills":{$size:{$gte:3}}})
+Error: error: {
+        "operationTime" : Timestamp(1612505994, 7),
+        "ok" : 0,
+        "errmsg" : "Expression $gte takes exactly 2 arguments. 1 were passed in.",
+        "code" : 16020,
+        "codeName" : "Location16020",
+        "$clusterTime" : {
+                "clusterTime" : Timestamp(1612505994, 7),
+                "signature" : {
+                        "hash" : BinData(0,"CAL53AGxv49sr/J59TZlZ43RpJs="),
+                        "keyId" : NumberLong("6921654416743333891")
+                }
+        }
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({"skills":{$size:{$gte:3}}})
+Error: error: {
+        "operationTime" : Timestamp(1612506007, 1),
+        "ok" : 0,
+        "errmsg" : "$size needs a number",
+        "code" : 2,
+        "codeName" : "BadValue",
+        "$clusterTime" : {
+                "clusterTime" : Timestamp(1612506007, 1),
+                "signature" : {
+                        "hash" : BinData(0,"9ektg7Tn221GZXne72iwiwdRhPk="),
+                        "keyId" : NumberLong("6921654416743333891")
+                }
+        }
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find()
+{ "_id" : ObjectId("601ce015d34dab09d8e1204d"), "user" : "razak-mohamed", "contact" : { "email" : "razzaksr@gmail.com", "mobile" : 8667002959 }, "dob" : "1990-01-26", "skills" : [ "java", "javascript", "python", "dot net", "selenium" ] }
+{ "_id" : ObjectId("601ce015d34dab09d8e1204e"), "user" : "sabari-nathan", "contact" : { "email" : "sabariragu@gmail.com", "mobile" : 8667002959 }, "dob" : "1990-05-18", "skills" : [ "python", "dot net" ] }
+{ "_id" : ObjectId("601ce015d34dab09d8e1204f"), "user" : "annamalai", "contact" : { "email" : "annamalai.s@gmail.com", "mobile" : 9688193688 }, "dob" : "1995-08-20", "skills" : [ "java", "javascript", "python", "dot net", "selenium" ] }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({skills:{$elemMatch:{$in:['python']}}})
+{ "_id" : ObjectId("601ce015d34dab09d8e1204d"), "user" : "razak-mohamed", "contact" : { "email" : "razzaksr@gmail.com", "mobile" : 8667002959 }, "dob" : "1990-01-26", "skills" : [ "java", "javascript", "python", "dot net", "selenium" ] }
+{ "_id" : ObjectId("601ce015d34dab09d8e1204e"), "user" : "sabari-nathan", "contact" : { "email" : "sabariragu@gmail.com", "mobile" : 8667002959 }, "dob" : "1990-05-18", "skills" : [ "python", "dot net" ] }
+{ "_id" : ObjectId("601ce015d34dab09d8e1204f"), "user" : "annamalai", "contact" : { "email" : "annamalai.s@gmail.com", "mobile" : 9688193688 }, "dob" : "1995-08-20", "skills" : [ "java", "javascript", "python", "dot net", "selenium" ] }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.profile.find({skills:{$in:['python']}})
+{ "_id" : ObjectId("601ce015d34dab09d8e1204d"), "user" : "razak-mohamed", "contact" : { "email" : "razzaksr@gmail.com", "mobile" : 8667002959 }, "dob" : "1990-01-26", "skills" : [ "java", "javascript", "python", "dot net", "selenium" ] }
+{ "_id" : ObjectId("601ce015d34dab09d8e1204e"), "user" : "sabari-nathan", "contact" : { "email" : "sabariragu@gmail.com", "mobile" : 8667002959 }, "dob" : "1990-05-18", "skills" : [ "python", "dot net" ] }
+{ "_id" : ObjectId("601ce015d34dab09d8e1204f"), "user" : "annamalai", "contact" : { "email" : "annamalai.s@gmail.com", "mobile" : 9688193688 }, "dob" : "1995-08-20", "skills" : [ "java", "javascript", "python", "dot net", "selenium" ] }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.find()
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12050"), "user" : "razak", "kart" : [ 1200, 450, 120, 70 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12051"), "user" : "sabari", "kart" : [ 9800, 12000, 7600 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12052"), "user" : "sheik", "kart" : [ 120, 4500, 12900 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12053"), "user" : "manikandan", "kart" : [ 4500, 4600, 1200, 45000 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12054"), "user" : "rajiya", "kart" : [ 1200, 450, 120, 70 ] }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.find({kart:{$elemMatch:{$gte:500}}})
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12050"), "user" : "razak", "kart" : [ 1200, 450, 120, 70 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12051"), "user" : "sabari", "kart" : [ 9800, 12000, 7600 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12052"), "user" : "sheik", "kart" : [ 120, 4500, 12900 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12053"), "user" : "manikandan", "kart" : [ 4500, 4600, 1200, 45000 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12054"), "user" : "rajiya", "kart" : [ 1200, 450, 120, 70 ] }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.find({kart.0:{$elemMatch:{$gte:500}}})
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:18
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.find({"kart.0":{$elemMatch:{$gte:500}}})
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.find({kart.0:{$gte:500}})
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:18
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.find({"kart.0":{$gte:500}})
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12050"), "user" : "razak", "kart" : [ 1200, 450, 120, 70 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12051"), "user" : "sabari", "kart" : [ 9800, 12000, 7600 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12053"), "user" : "manikandan", "kart" : [ 4500, 4600, 1200, 45000 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12054"), "user" : "rajiya", "kart" : [ 1200, 450, 120, 70 ] }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.find({"kart":{$size:{$not:4}}})
+Error: error: {
+        "operationTime" : Timestamp(1612506540, 1),
+        "ok" : 0,
+        "errmsg" : "$size needs a number",
+        "code" : 2,
+        "codeName" : "BadValue",
+        "$clusterTime" : {
+                "clusterTime" : Timestamp(1612506540, 1),
+                "signature" : {
+                        "hash" : BinData(0,"oov/QOtyYG6T200frkRGzo1kS48="),
+                        "keyId" : NumberLong("6921654416743333891")
+                }
+        }
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.find({"kart":{$size:4}})
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12050"), "user" : "razak", "kart" : [ 1200, 450, 120, 70 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12053"), "user" : "manikandan", "kart" : [ 4500, 4600, 1200, 45000 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12054"), "user" : "rajiya", "kart" : [ 1200, 450, 120, 70 ] }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.find({"kart":{$size:2}})
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.find({"kart":{$size:2}})
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.find({"kart":{$size:3}})
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12051"), "user" : "sabari", "kart" : [ 9800, 12000, 7600 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12052"), "user" : "sheik", "kart" : [ 120, 4500, 12900 ] }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.find({"kart":{$size:{$lt:4}}})
+Error: error: {
+        "operationTime" : Timestamp(1612506584, 1),
+        "ok" : 0,
+        "errmsg" : "$size needs a number",
+        "code" : 2,
+        "codeName" : "BadValue",
+        "$clusterTime" : {
+                "clusterTime" : Timestamp(1612506584, 1),
+                "signature" : {
+                        "hash" : BinData(0,"pLWYKQFF5HMMcDo/gec3ghBlXMI="),
+                        "keyId" : NumberLong("6921654416743333891")
+                }
+        }
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.find({"kart":{$size:4}})
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12050"), "user" : "razak", "kart" : [ 1200, 450, 120, 70 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12053"), "user" : "manikandan", "kart" : [ 4500, 4600, 1200, 45000 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12054"), "user" : "rajiya", "kart" : [ 1200, 450, 120, 70 ] }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.find().pretty()
+{
+        "_id" : ObjectId("601ce4dcd34dab09d8e12050"),
+        "user" : "razak",
+        "kart" : [
+                1200,
+                450,
+                120,
+                70
+        ]
+}
+{
+        "_id" : ObjectId("601ce4dcd34dab09d8e12051"),
+        "user" : "sabari",
+        "kart" : [
+                9800,
+                12000,
+                7600
+        ]
+}
+{
+        "_id" : ObjectId("601ce4dcd34dab09d8e12052"),
+        "user" : "sheik",
+        "kart" : [
+                120,
+                4500,
+                12900
+        ]
+}
+{
+        "_id" : ObjectId("601ce4dcd34dab09d8e12053"),
+        "user" : "manikandan",
+        "kart" : [
+                4500,
+                4600,
+                1200,
+                45000
+        ]
+}
+{
+        "_id" : ObjectId("601ce4dcd34dab09d8e12054"),
+        "user" : "rajiya",
+        "kart" : [
+                1200,
+                450,
+                120,
+                70
+        ]
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.find({"kart":{$type:4}})
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12050"), "user" : "razak", "kart" : [ 1200, 450, 120, 70 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12051"), "user" : "sabari", "kart" : [ 9800, 12000, 7600 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12052"), "user" : "sheik", "kart" : [ 120, 4500, 12900 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12053"), "user" : "manikandan", "kart" : [ 4500, 4600, 1200, 45000 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12054"), "user" : "rajiya", "kart" : [ 1200, 450, 120, 70 ] }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.insertOne({"user":123454,"kart":1.2})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("601ce67a57470794db3090b0")
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.find().pretty()
+{
+        "_id" : ObjectId("601ce4dcd34dab09d8e12050"),
+        "user" : "razak",
+        "kart" : [
+                1200,
+                450,
+                120,
+                70
+        ]
+}
+{
+        "_id" : ObjectId("601ce4dcd34dab09d8e12051"),
+        "user" : "sabari",
+        "kart" : [
+                9800,
+                12000,
+                7600
+        ]
+}
+{
+        "_id" : ObjectId("601ce4dcd34dab09d8e12052"),
+        "user" : "sheik",
+        "kart" : [
+                120,
+                4500,
+                12900
+        ]
+}
+{
+        "_id" : ObjectId("601ce4dcd34dab09d8e12053"),
+        "user" : "manikandan",
+        "kart" : [
+                4500,
+                4600,
+                1200,
+                45000
+        ]
+}
+{
+        "_id" : ObjectId("601ce4dcd34dab09d8e12054"),
+        "user" : "rajiya",
+        "kart" : [
+                1200,
+                450,
+                120,
+                70
+        ]
+}
+{
+        "_id" : ObjectId("601ce67a57470794db3090b0"),
+        "user" : 123454,
+        "kart" : 1.2
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.find({"kart":{$type:4}})
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12050"), "user" : "razak", "kart" : [ 1200, 450, 120, 70 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12051"), "user" : "sabari", "kart" : [ 9800, 12000, 7600 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12052"), "user" : "sheik", "kart" : [ 120, 4500, 12900 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12053"), "user" : "manikandan", "kart" : [ 4500, 4600, 1200, 45000 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12054"), "user" : "rajiya", "kart" : [ 1200, 450, 120, 70 ] }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.find({"kart":{$type:1}})
+{ "_id" : ObjectId("601ce67a57470794db3090b0"), "user" : 123454, "kart" : 1.2 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.find({"user":{$type:2}})
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12050"), "user" : "razak", "kart" : [ 1200, 450, 120, 70 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12051"), "user" : "sabari", "kart" : [ 9800, 12000, 7600 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12052"), "user" : "sheik", "kart" : [ 120, 4500, 12900 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12053"), "user" : "manikandan", "kart" : [ 4500, 4600, 1200, 45000 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12054"), "user" : "rajiya", "kart" : [ 1200, 450, 120, 70 ] }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.find({"user":{$type:1}})
+{ "_id" : ObjectId("601ce67a57470794db3090b0"), "user" : 123454, "kart" : 1.2 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY>
