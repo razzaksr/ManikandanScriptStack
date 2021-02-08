@@ -1672,3 +1672,260 @@ MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.find({"user":{$type:2}}
 MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.find({"user":{$type:1}})
 { "_id" : ObjectId("601ce67a57470794db3090b0"), "user" : 123454, "kart" : 1.2 }
 MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY>
+
+
+Day 6:
+
+Microsoft Windows [Version 10.0.10240]
+(c) 2015 Microsoft Corporation. All rights reserved.
+
+C:\Users\SRDB>mongo "mongodb+srv://scriptmani.q77zz.mongodb.net/ScriptMani" --username razak
+MongoDB shell version v4.4.3
+Enter password:
+connecting to: mongodb://scriptmani-shard-00-02.q77zz.mongodb.net:27017,scriptmani-shard-00-00.q77zz.mongodb.net:27017,scriptmani-shard-00-01.q77zz.mongodb.net:27017/ScriptMani?authSource=admin&compressors=disabled&gssapiServiceName=mongodb&replicaSet=atlas-k38q32-shard-0&ssl=true
+Implicit session: session { "id" : UUID("b73d6060-0be9-4282-9424-d972f0bbdab4") }
+MongoDB server version: 4.4.3
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> use zealous
+switched to db zealous
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.business.find()
+{ "_id" : ObjectId("601a3a62018a2f524aa20f50"), "shopname" : "coffee hut", "shopnature" : "refresh corner", "shopaddress" : "ponnammapet" }
+{ "_id" : ObjectId("601a3a62018a2f524aa20f51"), "shopname" : "java hut", "shopnature" : "brunch", "shopaddress" : "new bus stand" }
+{ "_id" : ObjectId("601a3a62018a2f524aa20f52"), "shopname" : "coffee mad", "shopnature" : "snacks corner", "shopaddress" : "javavillage" }
+{ "_id" : ObjectId("601a3a62018a2f524aa20f53"), "shopname" : "buhari", "shopnature" : "brunch corner", "shopaddress" : "ponnammapet" }
+{ "_id" : ObjectId("601a3b18018a2f524aa20f54"), "shopname" : "ponnammapet corner", "shopnature" : "coffeeshop", "shopaddress" : "ammapet" }
+{ "_id" : ObjectId("601b8484d90ae211d4ca9472"), "shopname" : "ammapet corner", "shopnature" : "coffeeshop", "shopaddress" : "ammapet" }
+{ "_id" : ObjectId("601b84bdd90ae211d4ca9473"), "db.business.findOneAndUpdate({"shopname":/.*ponnammapet.*/},{$set:{""}}) }
+uncaught exception: SyntaxError: missing : after property id :indOneAndUpdate({"shopname":/.*ponnammapet.*/},{$set:{""}}) : "ponnammapet" }
+@(shell):1:69ectId("601b906d0803cc3545a00acc"), "db.business.findOneAndUpdate({"shopname":/.*ponnammapet.*/},{$set:{""}})Ammapalayam" }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.business.findOneAndUpdate({"shopname":/.*ponnammapet.*/},{$set:{"}})
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY>
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.business.findOneAndUpdate({"shopaddress":{$in:['ponnammapet']}},{$set:{"shopaddress":"three roads"}})
+{
+        "_id" : ObjectId("601a3a62018a2f524aa20f50"),
+        "shopname" : "coffee hut",
+        "shopnature" : "refresh corner",
+        "shopaddress" : "ponnammapet"
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.business.find()
+{ "_id" : ObjectId("601a3a62018a2f524aa20f50"), "shopname" : "coffee hut", "shopnature" : "refresh corner", "shopaddress" : "three roads" }
+{ "_id" : ObjectId("601a3a62018a2f524aa20f51"), "shopname" : "java hut", "shopnature" : "brunch", "shopaddress" : "new bus stand" }
+{ "_id" : ObjectId("601a3a62018a2f524aa20f52"), "shopname" : "coffee mad", "shopnature" : "snacks corner", "shopaddress" : "javavillage" }
+{ "_id" : ObjectId("601a3a62018a2f524aa20f53"), "shopname" : "buhari", "shopnature" : "brunch corner", "shopaddress" : "ponnammapet" }
+{ "_id" : ObjectId("601a3b18018a2f524aa20f54"), "shopname" : "ponnammapet corner", "shopnature" : "coffeeshop", "shopaddress" : "ammapet" }
+{ "_id" : ObjectId("601b8484d90ae211d4ca9472"), "shopname" : "ammapet corner", "shopnature" : "coffeeshop", "shopaddress" : "ammapet" }
+{ "_id" : ObjectId("601b84bdd90ae211d4ca9473"), "shopname" : "apple corner", "shopaddress" : "four roads", "rating" : 4.5 }
+{ "_id" : ObjectId("601b906d0803cc3545a00acb"), "shopname" : "bismi biriyani stall", "shopnature" : "food", "shopaddress" : "ponnammapet" }
+{ "_id" : ObjectId("601b906d0803cc3545a00acc"), "shopname" : "vtech", "shopnature" : "xerox service", "shopaddress" : "J.Ammapalayam" }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.business.updateMany({"shopaddress":"ammapet"},{$set:{"shopaddress":"three roads"}})
+{ "acknowledged" : true, "matchedCount" : 2, "modifiedCount" : 2 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.business.find()
+{ "_id" : ObjectId("601a3a62018a2f524aa20f50"), "shopname" : "coffee hut", "shopnature" : "refresh corner", "shopaddress" : "three roads" }
+{ "_id" : ObjectId("601a3a62018a2f524aa20f51"), "shopname" : "java hut", "shopnature" : "brunch", "shopaddress" : "new bus stand" }
+{ "_id" : ObjectId("601a3a62018a2f524aa20f52"), "shopname" : "coffee mad", "shopnature" : "snacks corner", "shopaddress" : "javavillage" }
+{ "_id" : ObjectId("601a3a62018a2f524aa20f53"), "shopname" : "buhari", "shopnature" : "brunch corner", "shopaddress" : "ponnammapet" }
+{ "_id" : ObjectId("601a3b18018a2f524aa20f54"), "shopname" : "ponnammapet corner", "shopnature" : "coffeeshop", "shopaddress" : "three roads" }
+{ "_id" : ObjectId("601b8484d90ae211d4ca9472"), "shopname" : "ammapet corner", "shopnature" : "coffeeshop", "shopaddress" : "three roads" }
+{ "_id" : ObjectId("601b84bdd90ae211d4ca9473"), "shopname" : "apple corner", "shopaddress" : "four roads", "rating" : 4.5 }
+{ "_id" : ObjectId("601b906d0803cc3545a00acb"), "shopname" : "bismi biriyani stall", "shopnature" : "food", "shopaddress" : "ponnammapet" }
+{ "_id" : ObjectId("601b906d0803cc3545a00acc"), "shopname" : "vtech", "shopnature" : "xerox service", "shopaddress" : "J.Ammapalayam" }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.business.deleteMany({"shopaddress":"ponnammapet"})
+{ "acknowledged" : true, "deletedCount" : 2 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.business.find()
+{ "_id" : ObjectId("601a3a62018a2f524aa20f50"), "shopname" : "coffee hut", "shopnature" : "refresh corner", "shopaddress" : "three roads" }
+{ "_id" : ObjectId("601a3a62018a2f524aa20f51"), "shopname" : "java hut", "shopnature" : "brunch", "shopaddress" : "new bus stand" }
+{ "_id" : ObjectId("601a3a62018a2f524aa20f52"), "shopname" : "coffee mad", "shopnature" : "snacks corner", "shopaddress" : "javavillage" }
+{ "_id" : ObjectId("601a3b18018a2f524aa20f54"), "shopname" : "ponnammapet corner", "shopnature" : "coffeeshop", "shopaddress" : "three roads" }
+{ "_id" : ObjectId("601b8484d90ae211d4ca9472"), "shopname" : "ammapet corner", "shopnature" : "coffeeshop", "shopaddress" : "three roads" }
+{ "_id" : ObjectId("601b84bdd90ae211d4ca9473"), "shopname" : "apple corner", "shopaddress" : "four roads", "rating" : 4.5 }
+{ "_id" : ObjectId("601b906d0803cc3545a00acc"), "shopname" : "vtech", "shopnature" : "xerox service", "shopaddress" : "J.Ammapalayam" }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.stocks.insertMany({"vendor":"letech","venderaddress":"new bus stand","vendorsince":2010})
+uncaught exception: TypeError: documents.map is not a function :
+DBCollection.prototype.insertMany@src/mongo/shell/crud_api.js:307:17
+@(shell):1:1
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.stocks.insertMany([{"vendor":"letech","venderaddress":"new bus stand","vendorsince":2010},{"vendor":"ABC tech","vendoraddress":"ammapet","vendorsince":2013},{"vendor":"zealous","vendoraddress":"ponnammapet","vendorsince":2013}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("6020cec9cd132be0a8182fca"),
+                ObjectId("6020cec9cd132be0a8182fcb"),
+                ObjectId("6020cec9cd132be0a8182fcc")
+        ]
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.stocks.find()
+{ "_id" : ObjectId("601a4145018a2f524aa20f56"), "stock" : "aluminium", "worth" : 450.6, "own" : "razak" }
+{ "_id" : ObjectId("601a4145018a2f524aa20f57"), "stock" : "tata", "worth" : 560.4, "own" : "mani" }
+{ "_id" : ObjectId("601a4145018a2f524aa20f58"), "stock" : "silver", "worth" : 6710.5, "own" : "razak" }
+{ "_id" : ObjectId("601a4145018a2f524aa20f59"), "stock" : "aluminium", "worth" : 890, "own" : "richard" }
+{ "_id" : ObjectId("601a4145018a2f524aa20f5b"), "stock" : "jsw", "worth" : 875.9, "own" : "mani" }
+{ "_id" : ObjectId("601a43a4018a2f524aa20f5c"), "stock" : "iron", "worth" : 786.5, "own" : "mohamed" }
+{ "_id" : ObjectId("601b888e0803cc3545a00aca"), "stock" : "tata", "worth" : 760, "own" : "Rasheedha" }
+{ "_id" : ObjectId("6020cec9cd132be0a8182fca"), "vendor" : "letech", "venderaddress" : "new bus stand", "vendorsince" : 2010 }
+{ "_id" : ObjectId("6020cec9cd132be0a8182fcb"), "vendor" : "ABC tech", "vendoraddress" : "ammapet", "vendorsince" : 2013 }
+{ "_id" : ObjectId("6020cec9cd132be0a8182fcc"), "vendor" : "zealous", "vendoraddress" : "ponnammapet", "vendorsince" : 2013 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.stocks.insertOne({"stock":"tata","worth":490,"own":"mohamed","vendor_details:{"vendor":"btech","vendoraddress":"fair lands","vendorsince":2010}"})
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:82
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.stocks.insertOne({"stock":"tata","worth":490,"own":"mohamed","vendor_details":{"vendor":"btech","vendoraddress":"fair lands","vendorsince":2010}"})
+uncaught exception: SyntaxError: "" literal not terminated before end of script :
+@(shell):1:150
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.stocks.insertOne({"stock":"tata","worth":490,"own":"mohamed","vendor_details":{"vendor":"btech","vendoraddress":"fair lands","vendorsince":2010}})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("6020cf74cd132be0a8182fcd")
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.stocks.find()
+{ "_id" : ObjectId("601a4145018a2f524aa20f56"), "stock" : "aluminium", "worth" : 450.6, "own" : "razak" }
+{ "_id" : ObjectId("601a4145018a2f524aa20f57"), "stock" : "tata", "worth" : 560.4, "own" : "mani" }
+{ "_id" : ObjectId("601a4145018a2f524aa20f58"), "stock" : "silver", "worth" : 6710.5, "own" : "razak" }
+{ "_id" : ObjectId("601a4145018a2f524aa20f59"), "stock" : "aluminium", "worth" : 890, "own" : "richard" }
+{ "_id" : ObjectId("601a4145018a2f524aa20f5b"), "stock" : "jsw", "worth" : 875.9, "own" : "mani" }
+{ "_id" : ObjectId("601a43a4018a2f524aa20f5c"), "stock" : "iron", "worth" : 786.5, "own" : "mohamed" }
+{ "_id" : ObjectId("601b888e0803cc3545a00aca"), "stock" : "tata", "worth" : 760, "own" : "Rasheedha" }
+{ "_id" : ObjectId("6020cec9cd132be0a8182fca"), "vendor" : "letech", "venderaddress" : "new bus stand", "vendorsince" : 2010 }
+{ "_id" : ObjectId("6020cec9cd132be0a8182fcb"), "vendor" : "ABC tech", "vendoraddress" : "ammapet", "vendorsince" : 2013 }
+{ "_id" : ObjectId("6020cec9cd132be0a8182fcc"), "vendor" : "zealous", "vendoraddress" : "ponnammapet", "vendorsince" : 2013 }
+{ "_id" : ObjectId("6020cf74cd132be0a8182fcd"), "stock" : "tata", "worth" : 490, "own" : "mohamed", "vendor_details" : { "vendor" : "btech", "vendoraddress" : "fair lands", "vendorsince" : 2010 } }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.stocks.insertOne({"stock":"jindal","worth":1200,"own":"meharaj","vendor_details":ObjectId("6020cec9cd132be0a8182fca")})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("6020cfbfcd132be0a8182fce")
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.stocks.find()
+{ "_id" : ObjectId("601a4145018a2f524aa20f56"), "stock" : "aluminium", "worth" : 450.6, "own" : "razak" }
+{ "_id" : ObjectId("601a4145018a2f524aa20f57"), "stock" : "tata", "worth" : 560.4, "own" : "mani" }
+{ "_id" : ObjectId("601a4145018a2f524aa20f58"), "stock" : "silver", "worth" : 6710.5, "own" : "razak" }
+{ "_id" : ObjectId("601a4145018a2f524aa20f59"), "stock" : "aluminium", "worth" : 890, "own" : "richard" }
+{ "_id" : ObjectId("601a4145018a2f524aa20f5b"), "stock" : "jsw", "worth" : 875.9, "own" : "mani" }
+{ "_id" : ObjectId("601a43a4018a2f524aa20f5c"), "stock" : "iron", "worth" : 786.5, "own" : "mohamed" }
+{ "_id" : ObjectId("601b888e0803cc3545a00aca"), "stock" : "tata", "worth" : 760, "own" : "Rasheedha" }
+{ "_id" : ObjectId("6020cec9cd132be0a8182fca"), "vendor" : "letech", "venderaddress" : "new bus stand", "vendorsince" : 2010 }
+{ "_id" : ObjectId("6020cec9cd132be0a8182fcb"), "vendor" : "ABC tech", "vendoraddress" : "ammapet", "vendorsince" : 2013 }
+{ "_id" : ObjectId("6020cec9cd132be0a8182fcc"), "vendor" : "zealous", "vendoraddress" : "ponnammapet", "vendorsince" : 2013 }
+{ "_id" : ObjectId("6020cf74cd132be0a8182fcd"), "stock" : "tata", "worth" : 490, "own" : "mohamed", "vendor_details" : { "vendor" : "btech", "vendoraddress" : "fair lands", "vendorsince" : 2010 } }
+{ "_id" : ObjectId("6020cfbfcd132be0a8182fce"), "stock" : "jindal", "worth" : 1200, "own" : "meharaj", "vendor_details" : ObjectId("6020cec9cd132be0a8182fca") }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.stocks.find({"stock":"jindal"}{"vendor_details":1})
+uncaught exception: SyntaxError: missing ) after argument list :
+@(shell):1:33
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.stocks.find({"stock":"jindal"})
+{ "_id" : ObjectId("6020cfbfcd132be0a8182fce"), "stock" : "jindal", "worth" : 1200, "own" : "meharaj", "vendor_details" : ObjectId("6020cec9cd132be0a8182fca") }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.stocks.find({"stock":"jindal"},{"vendor_details":1})
+{ "_id" : ObjectId("6020cfbfcd132be0a8182fce"), "vendor_details" : ObjectId("6020cec9cd132be0a8182fca") }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.stocks.insertOne({"stock":"iron","worth":800,"own":"sabari","vendor_details":{$ref:"business",$id:ObjectId("601b906d0803cc3545a00acc"),$db:"zealous"}})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("6020d173cd132be0a8182fcf")
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.stocks.find({$and:[{"stock":"iron"},{"vendor_details":{$exists:true}}]})
+{ "_id" : ObjectId("6020d173cd132be0a8182fcf"), "stock" : "iron", "worth" : 800, "own" : "sabari", "vendor_details" : DBRef("business", ObjectId("601b906d0803cc3545a00acc"), "zealous") }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY>
+
+
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.find()
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12050"), "user" : "razak", "kart" : [ 1200, 450, 120, 70 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12051"), "user" : "sabari", "kart" : [ 9800, 12000, 7600 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12052"), "user" : "sheik", "kart" : [ 120, 4500, 12900 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12053"), "user" : "manikandan", "kart" : [ 4500, 4600, 1200, 45000 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12054"), "user" : "rajiya", "kart" : [ 1200, 450, 120, 70 ] }
+{ "_id" : ObjectId("601ce67a57470794db3090b0"), "user" : 123454, "kart" : 1.2 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.findAndModify({query:{"user":"razak"},update:{$push:{"kart":10000}}})
+{
+        "_id" : ObjectId("601ce4dcd34dab09d8e12050"),
+        "user" : "razak",
+        "kart" : [
+                1200,
+                450,
+                120,
+                70
+        ]
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.find()
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12050"), "user" : "razak", "kart" : [ 1200, 450, 120, 70, 10000 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12051"), "user" : "sabari", "kart" : [ 9800, 12000, 7600 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12052"), "user" : "sheik", "kart" : [ 120, 4500, 12900 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12053"), "user" : "manikandan", "kart" : [ 4500, 4600, 1200, 45000 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12054"), "user" : "rajiya", "kart" : [ 1200, 450, 120, 70 ] }
+{ "_id" : ObjectId("601ce67a57470794db3090b0"), "user" : 123454, "kart" : 1.2 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.findAndModify({query:{"user":"razak"},update:{$pop:{"kart":1}}})
+{
+        "_id" : ObjectId("601ce4dcd34dab09d8e12050"),
+        "user" : "razak",
+        "kart" : [
+                1200,
+                450,
+                120,
+                70,
+                10000
+        ]
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.find()
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12050"), "user" : "razak", "kart" : [ 1200, 450, 120, 70 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12051"), "user" : "sabari", "kart" : [ 9800, 12000, 7600 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12052"), "user" : "sheik", "kart" : [ 120, 4500, 12900 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12053"), "user" : "manikandan", "kart" : [ 4500, 4600, 1200, 45000 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12054"), "user" : "rajiya", "kart" : [ 1200, 450, 120, 70 ] }
+{ "_id" : ObjectId("601ce67a57470794db3090b0"), "user" : 123454, "kart" : 1.2 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.findAndModify({query:{"user":"razak"},update:{$pop:{"kart":1}}})
+{
+        "_id" : ObjectId("601ce4dcd34dab09d8e12050"),
+        "user" : "razak",
+        "kart" : [
+                1200,
+                450,
+                120,
+                70
+        ]
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.find()
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12050"), "user" : "razak", "kart" : [ 1200, 450, 120 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12051"), "user" : "sabari", "kart" : [ 9800, 12000, 7600 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12052"), "user" : "sheik", "kart" : [ 120, 4500, 12900 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12053"), "user" : "manikandan", "kart" : [ 4500, 4600, 1200, 45000 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12054"), "user" : "rajiya", "kart" : [ 1200, 450, 120, 70 ] }
+{ "_id" : ObjectId("601ce67a57470794db3090b0"), "user" : 123454, "kart" : 1.2 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.findAndModify({query:{"user":"sheik"},update:{$pop:{"kart":2}}})
+uncaught exception: Error: findAndModifyFailed failed: {
+        "operationTime" : Timestamp(1612764230, 3),
+        "ok" : 0,
+        "errmsg" : "$pop expects 1 or -1, found: 2",
+        "code" : 9,
+        "codeName" : "FailedToParse",
+        "$clusterTime" : {
+                "clusterTime" : Timestamp(1612764230, 3),
+                "signature" : {
+                        "hash" : BinData(0,"B4YM7Ca+yPpx6U7e5IHpHq3pcEU="),
+                        "keyId" : NumberLong("6921654416743333891")
+                }
+        }
+} :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+DBCollection.prototype.findAndModify@src/mongo/shell/collection.js:742:15
+@(shell):1:1
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.findAndModify({query:{"user":"sheik"},update:{$pop:{"kart":-1}}})
+{
+        "_id" : ObjectId("601ce4dcd34dab09d8e12052"),
+        "user" : "sheik",
+        "kart" : [
+                120,
+                4500,
+                12900
+        ]
+}
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.find()
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12050"), "user" : "razak", "kart" : [ 1200, 450, 120 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12051"), "user" : "sabari", "kart" : [ 9800, 12000, 7600 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12052"), "user" : "sheik", "kart" : [ 4500, 12900 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12053"), "user" : "manikandan", "kart" : [ 4500, 4600, 1200, 45000 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12054"), "user" : "rajiya", "kart" : [ 1200, 450, 120, 70 ] }
+{ "_id" : ObjectId("601ce67a57470794db3090b0"), "user" : 123454, "kart" : 1.2 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY>
+
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.update({"user":"razak"},{$set:{"email":"razzaksr@gmail.com"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY> db.flip.find()
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12050"), "user" : "razak", "kart" : [ 1200, 450, 120 ], "email" : "razzaksr@gmail.com" }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12051"), "user" : "sabari", "kart" : [ 9800, 12000, 7600 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12052"), "user" : "sheik", "kart" : [ 4500, 12900 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12053"), "user" : "manikandan", "kart" : [ 4500, 4600, 1200, 45000 ] }
+{ "_id" : ObjectId("601ce4dcd34dab09d8e12054"), "user" : "rajiya", "kart" : [ 1200, 450, 120, 70 ] }
+{ "_id" : ObjectId("601ce67a57470794db3090b0"), "user" : 123454, "kart" : 1.2 }
+MongoDB Enterprise atlas-k38q32-shard-0:PRIMARY>
